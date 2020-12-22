@@ -18,6 +18,8 @@ Controls:
 --------------------------------------------------
 References:
 --------------------------------------------------
+ Font: Ubuntu-Regular
+
  I want to thank the great Godot Community in general. There are so many helpfull tutorials and documentation
  
  You may check these good tutorial links from youtube channel "BornCG":
