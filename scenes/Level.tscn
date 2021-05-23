@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/characters/ball00.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/kineball.gd" type="Script" id=2]
@@ -14,6 +14,10 @@
 [ext_resource path="res://assets/sounds/sfx/finish.wav" type="AudioStream" id=12]
 [ext_resource path="res://assets/sounds/sfx/hurt.wav" type="AudioStream" id=13]
 [ext_resource path="res://animations/anim_eny6-7.tres" type="Animation" id=14]
+[ext_resource path="res://fonts/Ubuntu-Regular.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://assets/items/Coin.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scripts/counter_coins.gd" type="Script" id=17]
+[ext_resource path="res://assets/sounds/sfx/coin.wav" type="AudioStream" id=18]
 
 [sub_resource type="CubeMesh" id=1]
 material = ExtResource( 4 )
@@ -99,6 +103,14 @@ left_to_right = -0.9
 
 [sub_resource type="ConvexPolygonShape" id=21]
 points = PoolVector3Array( -2.78147, 1.02788, -1.01827, -2.78147, 1.02788, 1.02788, -2.71158, 0.901754, -0.961368, -2.71158, 0.901754, 0.970983, -2.19675, 0.735462, -1.01827, -2.12389, 0.69881, -1.01827, -2.12389, 0.69881, 1.02788, -1.42951, 0.333482, -1.01827, -1.02233, -0.975187, -0.975379, -1.02233, -0.975187, 0.984995, -0.0415108, -0.396972, 1.02788, 0.0417601, -0.990385, 1, 0.0508592, -1, -1, 0.652491, -0.7623, -1.01827, 0.652491, -0.7623, 1.02788, 0.965985, -0.990385, 1, 0.981466, -0.944963, -1.01827, 0.981466, -0.944963, 1.02788, 1.01827, -0.981616, -1.01827, 1.01827, -0.981616, 1.02788 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 50
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 50
+font_data = ExtResource( 15 )
 
 [node name="Level" type="Spatial"]
 
@@ -683,7 +695,122 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 1, 0, 0
 autoplay = "anim_eny6-7"
 anims/anim_eny6-7 = ExtResource( 14 )
 
-[node name="Sounds" type="Spatial" parent="."]
+[node name="Coins" type="Spatial" parent="."]
+
+[node name="coinh1" type="Spatial" parent="Coins"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.80295, 1.5, 29.5709 )
+
+[node name="Coin" parent="Coins/coinh1" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 0
+
+[node name="coinh2" type="Spatial" parent="Coins"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35812, 1.5, 3.274 )
+
+[node name="Coin" parent="Coins/coinh2" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 0
+
+[node name="coinh3" type="Spatial" parent="Coins"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9719, 1.5, -26.6439 )
+
+[node name="Coin" parent="Coins/coinh3" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 0
+
+[node name="coinh4" type="Spatial" parent="Coins"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2041, 12.6073, -58.5961 )
+
+[node name="Coin" parent="Coins/coinh4" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 0
+
+[node name="coinh5" type="Spatial" parent="Coins"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2041, 14.9399, -94.0379 )
+
+[node name="Coin" parent="Coins/coinh5" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 0
+
+[node name="coinh6" type="Spatial" parent="Coins"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2041, 22.8793, -123.101 )
+
+[node name="Coin" parent="Coins/coinh6" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 0
+
+[node name="coinh7" type="Spatial" parent="Coins"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64867, 22.8793, -171.932 )
+
+[node name="Coin" parent="Coins/coinh7" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 0
+
+[node name="coinh8" type="Spatial" parent="Coins"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89702, 25.4037, -247.268 )
+
+[node name="Coin" parent="Coins/coinh8" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 0
+
+[node name="coinh9" type="Spatial" parent="Coins"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0647655, 36.6029, -368.857 )
+
+[node name="Coin" parent="Coins/coinh9" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 0
+
+[node name="coinh10" type="Spatial" parent="Coins"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0647655, -5.86049, -450.49 )
+
+[node name="Coin" parent="Coins/coinh10" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 0
+
+[node name="HUD" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 500
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 974.0
+margin_bottom = 107.0
+custom_constants/separation = 10
+alignment = 2
+
+[node name="collected_coins_lbl" type="Label" parent="HUD/MarginContainer/HBoxContainer"]
+margin_left = 749.0
+margin_right = 886.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 22 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.694118, 1 )
+text = "Coins:"
+
+[node name="coin_count" type="Label" parent="HUD/MarginContainer/HBoxContainer"]
+margin_left = 896.0
+margin_right = 924.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 23 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.694118, 1 )
+text = "0"
+script = ExtResource( 17 )
+
+[node name="Sounds" type="Node" parent="."]
 
 [node name="hurt" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 13 )
@@ -692,6 +819,9 @@ volume_db = -15.0
 [node name="win" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 12 )
 volume_db = -15.0
+
+[node name="coinsnd" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 18 )
 [connection signal="body_entered" from="Platforms/finish/finish_area" to="KineBall" method="_on_finish_area_body_entered"]
 [connection signal="timeout" from="KineBall/Timer" to="KineBall" method="_on_Timer_timeout"]
 [connection signal="timeout" from="KineBall/Timer2" to="KineBall" method="_on_Timer2_timeout"]
@@ -703,3 +833,33 @@ volume_db = -15.0
 [connection signal="body_entered" from="Enemies/Enemy5" to="KineBall" method="_on_Enemy_body_entered"]
 [connection signal="body_entered" from="Enemies/E-group1/Enemy6" to="KineBall" method="_on_Enemy_body_entered"]
 [connection signal="body_entered" from="Enemies/E-group1/Enemy7" to="KineBall" method="_on_Enemy_body_entered"]
+[connection signal="body_entered" from="Coins/coinh1/Coin" to="Coins/coinh1/Coin" method="_on_Coin_body_entered"]
+[connection signal="cn_collected" from="Coins/coinh1/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh1/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
+[connection signal="body_entered" from="Coins/coinh2/Coin" to="Coins/coinh2/Coin" method="_on_Coin_body_entered"]
+[connection signal="cn_collected" from="Coins/coinh2/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh2/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
+[connection signal="body_entered" from="Coins/coinh3/Coin" to="Coins/coinh3/Coin" method="_on_Coin_body_entered"]
+[connection signal="cn_collected" from="Coins/coinh3/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh3/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
+[connection signal="body_entered" from="Coins/coinh4/Coin" to="Coins/coinh4/Coin" method="_on_Coin_body_entered"]
+[connection signal="cn_collected" from="Coins/coinh4/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh4/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
+[connection signal="body_entered" from="Coins/coinh5/Coin" to="Coins/coinh5/Coin" method="_on_Coin_body_entered"]
+[connection signal="cn_collected" from="Coins/coinh5/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh5/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
+[connection signal="body_entered" from="Coins/coinh6/Coin" to="Coins/coinh6/Coin" method="_on_Coin_body_entered"]
+[connection signal="cn_collected" from="Coins/coinh6/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh6/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
+[connection signal="body_entered" from="Coins/coinh7/Coin" to="Coins/coinh7/Coin" method="_on_Coin_body_entered"]
+[connection signal="cn_collected" from="Coins/coinh7/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh7/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
+[connection signal="body_entered" from="Coins/coinh8/Coin" to="Coins/coinh8/Coin" method="_on_Coin_body_entered"]
+[connection signal="cn_collected" from="Coins/coinh8/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh8/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
+[connection signal="body_entered" from="Coins/coinh9/Coin" to="Coins/coinh9/Coin" method="_on_Coin_body_entered"]
+[connection signal="cn_collected" from="Coins/coinh9/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh9/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
+[connection signal="body_entered" from="Coins/coinh10/Coin" to="Coins/coinh10/Coin" method="_on_Coin_body_entered"]
+[connection signal="cn_collected" from="Coins/coinh10/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh10/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]

@@ -14,6 +14,12 @@ Controls:
  Player Movement: `Arrow Keys`
  Jump: `Space`
  
+--------------------------------------------------
+Version: 1.1
+--------------------------------------------------
+ Added:
+  Coin items
+  Coin Counter
 
 --------------------------------------------------
 References:

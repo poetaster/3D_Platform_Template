@@ -9,6 +9,7 @@ var gravity= -5
 var jump_force = 120
 
 
+
 func _ready():
 	pass
 
@@ -65,3 +66,10 @@ func _on_Timer_timeout():
 
 func _on_Timer2_timeout():
 	get_tree().change_scene("res://scenes/Level.tscn")
+
+
+
+
+
+func _on_Coin_cn_collected():
+	get_parent().get_node("Sounds/coinsnd").play()
