@@ -6,6 +6,7 @@ Description:
  Basic 3D Platform Template to use in Godot Engine
  -it contains the basic player configuration to move, rotate, jump (gravity)
  -simple enemy animations, that you have to avoid to get to the finish
+ -collect coins and open doors
  
 
 --------------------------------------------------
@@ -15,11 +16,11 @@ Controls:
  Jump: `Space`
  
 --------------------------------------------------
-Version: 1.1
+Version: 1.2
 --------------------------------------------------
  Added:
-  Coin items
-  Coin Counter
+  -Mini Platforms
+  -Doors
 
 --------------------------------------------------
 References:
