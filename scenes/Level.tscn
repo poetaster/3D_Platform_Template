@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://assets/characters/ball00.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/kineball.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/objects/silver_material.tres" type="Material" id=19]
 [ext_resource path="res://scripts/triggers.gd" type="Script" id=20]
 [ext_resource path="res://animations/d1animp.tres" type="Animation" id=21]
+[ext_resource path="res://scenes/Level.gd" type="Script" id=22]
 
 [sub_resource type="CubeMesh" id=1]
 material = ExtResource( 4 )
@@ -109,14 +110,14 @@ top_radius = 0.5
 bottom_radius = 0.5
 height = 5.0
 
-[sub_resource type="CubeMesh" id=32]
+[sub_resource type="CubeMesh" id=22]
 material = ExtResource( 19 )
 size = Vector3( 15, 30, 2 )
 
-[sub_resource type="BoxShape" id=33]
+[sub_resource type="BoxShape" id=23]
 extents = Vector3( 7.5, 15, 1 )
 
-[sub_resource type="Animation" id=41]
+[sub_resource type="Animation" id=24]
 resource_name = "d2lsanimp"
 length = 3.0
 tracks/0/type = "value"
@@ -132,7 +133,7 @@ tracks/0/keys = {
 "values": [ Vector3( -7.5, 17.89, -506.642 ), Vector3( -10, 17.89, -506.642 ) ]
 }
 
-[sub_resource type="Animation" id=42]
+[sub_resource type="Animation" id=25]
 resource_name = "d2rsanimp"
 length = 3.0
 tracks/0/type = "value"
@@ -148,26 +149,26 @@ tracks/0/keys = {
 "values": [ Vector3( 7.5, 17.89, -506.642 ), Vector3( 10, 17.89, -506.642 ) ]
 }
 
-[sub_resource type="BoxShape" id=22]
+[sub_resource type="BoxShape" id=26]
 
-[sub_resource type="SpatialMaterial" id=23]
+[sub_resource type="SpatialMaterial" id=27]
 albedo_color = Color( 1, 0.913725, 0, 1 )
 
-[sub_resource type="PrismMesh" id=24]
-material = SubResource( 23 )
+[sub_resource type="PrismMesh" id=28]
+material = SubResource( 27 )
 left_to_right = -0.9
 
-[sub_resource type="ConvexPolygonShape" id=25]
+[sub_resource type="ConvexPolygonShape" id=29]
 points = PoolVector3Array( -2.78147, 1.02788, -1.01827, -2.78147, 1.02788, 1.02788, -2.71158, 0.901754, -0.961368, -2.71158, 0.901754, 0.970983, -2.19675, 0.735462, -1.01827, -2.12389, 0.69881, -1.01827, -2.12389, 0.69881, 1.02788, -1.42951, 0.333482, -1.01827, -1.02233, -0.975187, -0.975379, -1.02233, -0.975187, 0.984995, -0.0415108, -0.396972, 1.02788, 0.0417601, -0.990385, 1, 0.0508592, -1, -1, 0.652491, -0.7623, -1.01827, 0.652491, -0.7623, 1.02788, 0.965985, -0.990385, 1, 0.981466, -0.944963, -1.01827, 0.981466, -0.944963, 1.02788, 1.01827, -0.981616, -1.01827, 1.01827, -0.981616, 1.02788 )
 
-[sub_resource type="SpatialMaterial" id=37]
+[sub_resource type="SpatialMaterial" id=30]
 
-[sub_resource type="SphereMesh" id=38]
-material = SubResource( 37 )
+[sub_resource type="SphereMesh" id=31]
+material = SubResource( 30 )
 
-[sub_resource type="SpatialMaterial" id=39]
+[sub_resource type="SpatialMaterial" id=32]
 
-[sub_resource type="SphereShape" id=31]
+[sub_resource type="SphereShape" id=33]
 radius = 0.5
 
 [sub_resource type="SpatialMaterial" id=34]
@@ -175,20 +176,21 @@ radius = 0.5
 [sub_resource type="SphereMesh" id=35]
 material = SubResource( 34 )
 
-[sub_resource type="SpatialMaterial" id=40]
+[sub_resource type="SpatialMaterial" id=36]
 
-[sub_resource type="SphereShape" id=36]
+[sub_resource type="SphereShape" id=37]
 radius = 0.5
 
-[sub_resource type="DynamicFont" id=26]
+[sub_resource type="DynamicFont" id=38]
 size = 50
 font_data = ExtResource( 15 )
 
-[sub_resource type="DynamicFont" id=27]
+[sub_resource type="DynamicFont" id=39]
 size = 50
 font_data = ExtResource( 15 )
 
 [node name="Level" type="Spatial"]
+script = ExtResource( 22 )
 
 [node name="Platforms" type="Spatial" parent="."]
 
@@ -926,11 +928,11 @@ shape = SubResource( 19 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.85, -342.668 )
 
 [node name="mesh" type="MeshInstance" parent="Doors/door1"]
-mesh = SubResource( 32 )
+mesh = SubResource( 22 )
 material/0 = null
 
 [node name="coll" type="CollisionShape" parent="Doors/door1"]
-shape = SubResource( 33 )
+shape = SubResource( 23 )
 
 [node name="door1animp" type="AnimationPlayer" parent="Doors/door1"]
 anims/d1animp = ExtResource( 21 )
@@ -941,27 +943,27 @@ anims/d1animp = ExtResource( 21 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 17.89, -506.642 )
 
 [node name="mesh" type="MeshInstance" parent="Doors/door2/leftside"]
-mesh = SubResource( 32 )
+mesh = SubResource( 22 )
 material/0 = null
 
 [node name="coll" type="CollisionShape" parent="Doors/door2/leftside"]
-shape = SubResource( 33 )
+shape = SubResource( 23 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Doors/door2/leftside"]
-anims/d2lsanimp = SubResource( 41 )
+anims/d2lsanimp = SubResource( 24 )
 
 [node name="rightside" type="StaticBody" parent="Doors/door2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 17.89, -506.642 )
 
 [node name="mesh" type="MeshInstance" parent="Doors/door2/rightside"]
-mesh = SubResource( 32 )
+mesh = SubResource( 22 )
 material/0 = null
 
 [node name="coll" type="CollisionShape" parent="Doors/door2/rightside"]
-shape = SubResource( 33 )
+shape = SubResource( 23 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Doors/door2/rightside"]
-anims/d2rsanimp = SubResource( 42 )
+anims/d2rsanimp = SubResource( 25 )
 
 [node name="KineBall" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18398, 37.6001 )
@@ -984,17 +986,17 @@ shadow_color = Color( 0.160784, 0.160784, 0.160784, 1 )
 transform = Transform( 250, 3.08857e-07, 0, -7.72143e-06, 10, 0, 0, 0, 450, 0, -274.393, -297.618 )
 
 [node name="acs" type="CollisionShape" parent="Abyss"]
-shape = SubResource( 22 )
+shape = SubResource( 26 )
 
 [node name="ramp" type="StaticBody" parent="."]
 transform = Transform( -6.5812e-07, 0, -4.03951, 0, 1, 0, 1, 0, -1.62921e-07, 0, 31.8193, -384.758 )
 
 [node name="MeshInstance" type="MeshInstance" parent="ramp"]
-mesh = SubResource( 24 )
+mesh = SubResource( 28 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="ramp"]
-shape = SubResource( 25 )
+shape = SubResource( 29 )
 
 [node name="Enemies" type="Spatial" parent="."]
 
@@ -1052,112 +1054,96 @@ anims/anim_eny6-7 = ExtResource( 14 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.80295, 1.5, 29.5709 )
 
 [node name="Coin" parent="Coins/coinh1" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh2" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35812, 1.5, 3.274 )
 
 [node name="Coin" parent="Coins/coinh2" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh3" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9719, 1.5, -26.6439 )
 
 [node name="Coin" parent="Coins/coinh3" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh4" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2041, 12.6073, -58.5961 )
 
 [node name="Coin" parent="Coins/coinh4" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh5" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2041, 14.9399, -94.0379 )
 
 [node name="Coin" parent="Coins/coinh5" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh6" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2041, 22.8793, -123.101 )
 
 [node name="Coin" parent="Coins/coinh6" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh7" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64867, 22.8793, -171.932 )
 
 [node name="Coin" parent="Coins/coinh7" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh8" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89702, 25.4037, -247.268 )
 
 [node name="Coin" parent="Coins/coinh8" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh9" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0647655, 36.6029, -368.857 )
 
 [node name="Coin" parent="Coins/coinh9" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh10" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0647655, -5.86049, -450.49 )
 
 [node name="Coin" parent="Coins/coinh10" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh11" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.94565, 9.37093, 22.0074 )
 
 [node name="Coin" parent="Coins/coinh11" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh12" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9037, 4.08947, 12.8664 )
 
 [node name="Coin" parent="Coins/coinh12" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh13" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -15, -525 )
 
 [node name="Coin" parent="Coins/coinh13" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh14" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -15, -525 )
 
 [node name="Coin" parent="Coins/coinh14" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh15" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -15, -522 )
 
 [node name="Coin" parent="Coins/coinh15" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="coinh16" type="Spatial" parent="Coins"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -15, -522 )
 
 [node name="Coin" parent="Coins/coinh16" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 0
 
 [node name="triggers" type="Spatial" parent="."]
@@ -1167,11 +1153,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.90308, 34.2496, -317.18 )
 script = ExtResource( 20 )
 
 [node name="MeshInstance" type="MeshInstance" parent="triggers/t1"]
-mesh = SubResource( 38 )
-material/0 = SubResource( 39 )
+mesh = SubResource( 31 )
+material/0 = SubResource( 32 )
 
 [node name="CollisionShape" type="CollisionShape" parent="triggers/t1"]
-shape = SubResource( 31 )
+shape = SubResource( 33 )
 
 [node name="t2" type="Area" parent="triggers"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.40182, 8.00372, -490.279 )
@@ -1179,10 +1165,10 @@ script = ExtResource( 20 )
 
 [node name="MeshInstance" type="MeshInstance" parent="triggers/t2"]
 mesh = SubResource( 35 )
-material/0 = SubResource( 40 )
+material/0 = SubResource( 36 )
 
 [node name="CollisionShape" type="CollisionShape" parent="triggers/t2"]
-shape = SubResource( 36 )
+shape = SubResource( 37 )
 
 [node name="spawn test position" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.4084, -310.591 )
@@ -1190,11 +1176,25 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.4084, -310.591 )
 [node name="HUD" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -44.0
+margin_bottom = -216.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="uifb" type="Label" parent="HUD"]
+margin_left = 26.0
+margin_top = 15.0
+margin_right = 78.0
+margin_bottom = 29.0
+rect_scale = Vector2( 2, 2 )
+text = "stuff"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 50
@@ -1206,26 +1206,29 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer"]
+visible = false
 margin_left = 50.0
 margin_top = 50.0
-margin_right = 974.0
-margin_bottom = 107.0
+margin_right = 50.0
+margin_bottom = 50.0
 custom_constants/separation = 10
 alignment = 2
 
 [node name="collected_coins_lbl" type="Label" parent="HUD/MarginContainer/HBoxContainer"]
-margin_left = 749.0
-margin_right = 886.0
+visible = false
+margin_left = 38.0
+margin_right = 175.0
 margin_bottom = 57.0
-custom_fonts/font = SubResource( 26 )
+custom_fonts/font = SubResource( 38 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.694118, 1 )
 text = "Coins:"
 
 [node name="coin_count" type="Label" parent="HUD/MarginContainer/HBoxContainer"]
-margin_left = 896.0
-margin_right = 924.0
+visible = false
+margin_left = 147.0
+margin_right = 175.0
 margin_bottom = 57.0
-custom_fonts/font = SubResource( 27 )
+custom_fonts/font = SubResource( 39 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.694118, 1 )
 text = "0"
 script = ExtResource( 17 )
@@ -1242,6 +1245,7 @@ volume_db = -15.0
 
 [node name="coinsnd" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 18 )
+[connection signal="jump" from="." to="KineBall" method="_on_jump"]
 [connection signal="body_entered" from="Platforms/finish/finish_area" to="KineBall" method="_on_finish_area_body_entered"]
 [connection signal="timeout" from="KineBall/Timer" to="KineBall" method="_on_Timer_timeout"]
 [connection signal="timeout" from="KineBall/Timer2" to="KineBall" method="_on_Timer2_timeout"]
@@ -1254,52 +1258,52 @@ stream = ExtResource( 18 )
 [connection signal="body_entered" from="Enemies/E-group1/Enemy6" to="KineBall" method="_on_Enemy_body_entered"]
 [connection signal="body_entered" from="Enemies/E-group1/Enemy7" to="KineBall" method="_on_Enemy_body_entered"]
 [connection signal="body_entered" from="Coins/coinh1/Coin" to="Coins/coinh1/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh1/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh1/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh1/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh2/Coin" to="Coins/coinh2/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh2/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh2/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh2/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh3/Coin" to="Coins/coinh3/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh3/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh3/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh3/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh4/Coin" to="Coins/coinh4/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh4/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh4/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh4/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh5/Coin" to="Coins/coinh5/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh5/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh5/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh5/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh6/Coin" to="Coins/coinh6/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh6/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh6/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh6/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh7/Coin" to="Coins/coinh7/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh7/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh7/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh7/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh8/Coin" to="Coins/coinh8/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh8/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh8/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh8/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh9/Coin" to="Coins/coinh9/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh9/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh9/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh9/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh10/Coin" to="Coins/coinh10/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh10/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh10/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh10/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh11/Coin" to="Coins/coinh11/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh11/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh11/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh11/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh12/Coin" to="Coins/coinh12/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh12/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh12/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh12/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh13/Coin" to="Coins/coinh13/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh13/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh13/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh13/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh14/Coin" to="Coins/coinh14/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh14/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh14/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh14/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh15/Coin" to="Coins/coinh15/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh15/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh15/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh15/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="Coins/coinh16/Coin" to="Coins/coinh16/Coin" method="_on_Coin_body_entered"]
-[connection signal="cn_collected" from="Coins/coinh16/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="cn_collected" from="Coins/coinh16/Coin" to="KineBall" method="_on_Coin_cn_collected"]
+[connection signal="cn_collected" from="Coins/coinh16/Coin" to="HUD/MarginContainer/HBoxContainer/coin_count" method="_on_Coin_cn_collected"]
 [connection signal="body_entered" from="triggers/t1" to="KineBall" method="_on_t1_body_entered"]
 [connection signal="body_entered" from="triggers/t2" to="KineBall" method="_on_t2_body_entered"]
