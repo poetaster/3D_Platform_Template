@@ -28,13 +28,21 @@ func _ready():
 
 #	global_transform.origin = get_parent().get_node("spawn test position").global_transform.origin
 	pass	
-
+	
+func _unhandled_input(event):
+	#if event is InputEventScreenTouch:
+	#	var a = InputEventAction.new()
+	#	a.action = "jump"
+	#	a.pressed = false
+	#	Input.parse_input_event(a)
+	pass
+	
 func _input(event):
 	
 	#var label = Utils.get_main_node().get_node("HUD/uifb")
 	if event is InputEventScreenDrag:
 		if event.relative[0] > 0:
-			print(event.relative)
+			#print(event.relative)
 			vec_pos.x=1
 			$ballMesh.rotate_z(deg2rad(-rotspeed))
 		elif event.relative[0] < 0:
@@ -54,12 +62,11 @@ func _input(event):
 
 	vec_pos.y += gravity
 	
-	if (event is InputEventScreenTouch and
-		not InputEventScreenDrag):
+	if (event is InputEventScreenTouch):
+		if (event.index > 0):
 			vec_pos.y = jump_force
-	if event is InputEventSingleScreenSwipe:
-		vec_pos.y = jump_force
-			
+		#print(event.index)
+
 			
 	vec_pos = move_and_slide(vec_pos,Vector3.UP)
 		
@@ -86,11 +93,11 @@ func _physics_process(_delta):
 		$ballMesh.rotate_x(deg2rad(rotspeed))
 	else:
 		vec_pos.z= lerp(vec_pos.z,0,0.2) 
+		
 	vec_pos.y += gravity
 	
 	if Input.is_action_pressed("jump") and is_on_floor():
 		vec_pos.y = jump_force
-#	if Input.is_action_pressed("")
 			
 	vec_pos = move_and_slide(vec_pos,Vector3.UP)
 

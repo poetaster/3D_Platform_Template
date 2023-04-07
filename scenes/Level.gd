@@ -32,9 +32,9 @@ func _input(event):
 	if event is InputEventSingleScreenDrag:
 		label.text = "drag"
 		#print(event.as_text().replace('|','\n') )
-	if event is InputEventSingleScreenTap:
-		label.text = "finger tap"
-		emit_signal("jump")
+	#if event is InputEventSingleScreenTap:
+	#	label.text = "finger tap"
+	#	emit_signal("jump")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
